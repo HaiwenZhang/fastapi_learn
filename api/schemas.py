@@ -1,11 +1,29 @@
 from pydantic import BaseModel
 
-class ArticleSchema(BaseModel):
-    title: str
-    description: str
+class ArticleSchemaIn(BaseModel):
+    title:str
+    description:str
+
+class ArticleSchemaOut(ArticleSchemaIn):
+    id:int
 
 
-class MyArticleSchema(ArticleSchema):
-    id: int
-    title: str
-    description: str
+class UserSchemaIn(BaseModel):
+    username:str
+    password:str
+
+class UserSchemaOut(UserSchemaIn):
+    id:int
+
+
+class LoginSchema(BaseModel):
+    username:str
+    password:str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: str | None
+    scopes: list[str] = []
